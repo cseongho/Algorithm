@@ -1,4 +1,4 @@
-package Q10989;
+package baekjoon.Q10989;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
