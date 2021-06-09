@@ -1,4 +1,4 @@
-package test.test;
+package study.method;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
