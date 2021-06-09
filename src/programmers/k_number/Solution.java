@@ -1,4 +1,4 @@
-package programmers.k¹øÂ°¼ö;
+package programmers.k_number;
 
 class Solution {
     public int[] solution(int[] array, int[][] commands) {

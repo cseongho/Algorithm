@@ -1,4 +1,4 @@
-package programmers.Ã¼À°º¹;
+package programmers.workout_clothes;
 
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
