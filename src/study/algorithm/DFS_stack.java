@@ -37,7 +37,7 @@ public class DFS_stack {
     		System.out.println(curr + " ");
 
     		for(int next = 0; next < N; ++next) {
-        		if(!visited[next] &&Graph[node][next] !=0)
+        		if(!visited[next] &&Graph[curr][next] !=0)
         			mystack.push(next);
         	}
     	}

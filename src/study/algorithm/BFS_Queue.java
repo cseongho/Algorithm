@@ -23,9 +23,10 @@ public class BFS_Queue {
 			System.out.print(curr + " ");
 			
 			for(int next = 0; next < N; ++next) {
-        		if(!visited[next] &&Graph[node][next] !=0)
+        		if(!visited[next] &&Graph[curr][next] !=0) {
         			visited[next] = true;
         			myqueue.add(next);
+        		}
 			}
 		}
 	}
