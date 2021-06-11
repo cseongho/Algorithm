@@ -6,6 +6,7 @@ public class Permutation {
 	
 	static int solve(int pos, int cnt, int val) {
 		if (cnt == 2) return val;
+		if (pos == N) return -1;
 		
 		int ret = 0;
 		ret = Math.max(ret, solve(pos + 1, cnt + 1, val + Nums[pos]));
