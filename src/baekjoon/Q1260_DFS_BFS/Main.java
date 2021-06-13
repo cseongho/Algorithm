@@ -1,4 +1,4 @@
-package baekjoon.Q1260;
+package baekjoon.Q1260_DFS_BFS;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +22,27 @@ public class Main {
     	}
 	}
 	
+	/* dfs use stack 
+	public static void dfs(int node) {
+		visited = new boolean[N+1];
+    	Stack<Integer> mystack = new Stack<>();
+    	mystack.push(node);
+    	
+    	while (!mystack.empty()) {
+    		int curr = mystack.pop();
+    		
+    		if(visited[curr]) continue;
+    		
+    		visited[curr] = true;
+    		System.out.print(curr + " ");
+
+    		for(int next = 0; next < N+1; next++) {
+        		if(!visited[next] && Graph[curr][next] != 0)
+        			mystack.push(next);
+        	}
+    	}
+	} */
+
 	public static void bfs(int node) {
 		visited = new boolean[N+1];
 		
