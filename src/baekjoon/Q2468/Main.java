@@ -13,35 +13,19 @@ public class Main {
 	static int[][] Board;
 	static boolean[][] visited;
 	static int[][] D = { {-1,0}, {1,0}, {0,-1}, {0,1} };
-	
-	static class Point {
-		Point(int r, int c) {
-			row = r;
-			col = c;
-		}
-		int row, col;
-	}
-	
-	static int dfs(int height) {
-		Stack<Point> mystack = new Stack<>();
-		mystack.push(new Point(0, 0));
-		int cnt = 0;
-		
-		while(!mystack.empty()) {
-			Point curr = mystack.pop();
-			if (visited[curr.row][curr.col]) continue;
+	static int cnt = 0;
+	static int max_inarr = 0;
+
+	static void dfs(int r, int c,int height) {
+		visited[r][c] = true;
 			
-			visited[curr.row][curr.col] = true;
-			if(Board[curr.row][curr.col] > height) cnt++;
-			
-			for(int i = 0; i < 4; ++i) {
-				int nr = curr.row + D[i][0], nc = curr.col + D[i][1];
-				if(nr < 0 || nr > N-1 || nc < 0 || nc > N-1) continue;
-				if(Board[nr][nc] == 0) continue;
-				mystack.push(new Point(nr,nc));
+		for(int i = 0; i < 4; ++i) {
+			int nr = r + D[i][0], nc = c + D[i][1];
+			if(nr >= 0 && nc >= 0 && nr < N && nc < N) {
+				if(Board[nr][nc] > height && !visited[nr][nc]) 
+					dfs(nr,nc,height);
 			}
 		}
-		return cnt;
 	}
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -56,15 +40,26 @@ public class Main {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			for(int j = 0; j < N; j++) {
 				Board[i][j] = Integer.parseInt(st.nextToken());
+				if(max_inarr < Board[i][j]) max_inarr = Board[i][j];
 			}
 		}
 		
-		for(int i = 1; i <= 100; i++) {
-			arr.add(dfs(i));
+		for(int h = 0; h <= max_inarr; h++) {
+			cnt = 0;
+			for(int i = 0; i< N; i++) {
+				for(int j = 0; j < N; j++) {
+					if(Board[i][j] > h && !visited[i][j]) {
+						dfs(i,j,h);
+						cnt++;
+					}
+				}
+			}
+			arr.add(cnt);
+			visited = new boolean[N][N];
 		}
 		
-		Collections.sort(arr, Collections.reverseOrder());
-		System.out.println(arr.get(0));
+		int max = Collections.max(arr);
+		System.out.println(max);
 		
 	}
 }
