@@ -1,4 +1,4 @@
-package baekjoon.Q15650;
+package baekjoon.Q15651;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,9 +19,9 @@ public class Main {
 			return;
 		}
 		
-		for (int i = at; i <=N; i++) {
+		for (int i = 1; i <=N; i++) {
 			arr[depth] = i;
-			dfs(i + 1, depth + 1);
+			dfs(i, depth + 1);
 		}
 	}
 	
