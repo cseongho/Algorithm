@@ -1,13 +1,15 @@
-package baekjoon.Q15650;
+package baekjoon.Q15656;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
 	static int N,M;
 	static int[] arr;
+	static int[] input;
 	static StringBuilder sb = new StringBuilder();
 	
 	static void dfs(int at, int depth) {
@@ -19,10 +21,11 @@ public class Main {
 			return;
 		}
 		
-		for (int i = at; i <=N; i++) {
-			arr[depth] = i;
-			dfs(i + 1, depth + 1);
+		for (int i = 1; i <= N; i++) {
+			arr[depth] = input[i];
+			dfs(i, depth + 1);
 		}
+		
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -31,6 +34,14 @@ public class Main {
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
+		
+		input = new int[N+1];
+		
+		st = new StringTokenizer(br.readLine());
+		for(int i = 1; i < N+1; i++) {
+			input[i] = Integer.parseInt(st.nextToken());
+		}
+		Arrays.sort(input);
 		
 		arr = new int[M];
 		
