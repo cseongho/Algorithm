@@ -1,50 +1,71 @@
 package baekjoon.Q4949;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-
+import java.io.IOException;
+import java.util.Stack;
+ 
 public class Main {
-	static int cnt1, cnt2 = 0;
-	static int cnt3, cnt4 = 0;
-	
+ 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
+		StringBuilder sb = new StringBuilder();
+ 
+		String s;
 		
 		while(true) {
-			String str = br.readLine();
-			boolean vps = false;
-			if(str.equals(".")) break;
 			
-			for(int i = 0; i < str.length(); i++) {
-				if(str.charAt(i) == '(') {
-					cnt1++;
-				} else if (str.charAt(i) == ')') {
-					cnt2++;
+			s = br.readLine();
+			
+			if(s.equals(".")) {
+				break;
+			}
+			
+			sb.append(solve(s)).append('\n');
+		}
+		
+		System.out.println(sb);
+	}
+	
+	public static String solve(String s) {
+		
+		Stack<Character> stack = new Stack<>();
+		
+		for(int i = 0; i < s.length(); i++) {
+			
+			char c = s.charAt(i);
+
+			if(c == '(' || c == '[') {
+				stack.push(c);
+			}
+	
+			else if(c == ')') {
 				
-					if(cnt2 > cnt1) {
-						vps = false;
-						break;
-					}
-				} else if (str.charAt(i) == '[') {
-					cnt3++;
-				} else if (str.charAt(i) == ']') {
-					cnt4++;
-					
-					if(cnt4 > cnt3) {
-						vps = false;
-						break;
-					}
+				if(stack.empty() || stack.peek() != '(') {
+					return "no";
+				}
+				else {
+					stack.pop();
 				}
 			}
 			
-			if((vps && cnt1 == cnt2) || (vps && cnt3 == cnt4))
-				System.out.println("YES");
-			else
-				System.out.println("NO");
-			cnt1 = 0; cnt2 = 0; cnt3 = 0; cnt4 = 0;
+			else if(c == ']') {
 			
+				if(stack.empty() || stack.peek() != '[') {
+					return "no";
+				}
+				else {
+					stack.pop();
+				}
+			}
+		}
+		
+		if(stack.empty()) {
+			return "yes";
+		}
+		else {
+			return "no";
 		}
 	}
+ 
 }
