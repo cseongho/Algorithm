@@ -1,35 +1,40 @@
 package programmers.mock_test;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Solution {
 
 	public static int[] solution(int[] answers) {
-		int[] answer = new int[3];
-		int[] person1 = { 1, 2, 3, 4, 5 }; // 이만큼씩 반복
-		int[] person2 = { 2, 1, 2, 3, 2, 4, 2, 5 };
-		int[] person3 = { 3, 3, 1, 1, 2, 2, 4, 4, 5, 5 };
-		int answer1 = 0, answer2 = 0, answer3 = 0;
-
-		for (int i = 0; i < answer.length; i++) {
-			if(person1[i] == answer[i]) answer1++;
-			if(person2[i] == answer[i]) answer2++;
-			if(person3[i] == answer[i]) answer3++;
-		}
-
-		answer[0] = answer1;
-		answer[1] = answer2;
-		answer[2] = answer3;
-		
-		Arrays.sort(answer);
-
-		for(int i = 0; i <answer.length; i++) {
-			
-		}
-		
-		return answer;
-	}
-
+        int[] std1 = {1, 2, 3, 4, 5};
+        int[] std2 = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] std3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        int std1_ans = 0;
+        int std2_ans = 0;
+        int std3_ans = 0;
+        
+        for(int i = 0; i < answers.length; i++) {
+            if(answers[i] == std1[ i % 5]) 
+                std1_ans++;
+            if(answers[i] == std2[i % std2.length]) 
+                std2_ans++;
+            if(answers[i] == std3[i % 10]) 
+                std3_ans++;
+        }
+        
+        int max = Math.max(Math.max(std1_ans,std2_ans), std3_ans);
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        if(max == std1_ans) list.add(1);
+        if(max == std2_ans) list.add(2);
+        if(max == std3_ans) list.add(3);
+        
+        int[] answer = new int[list.size()];
+        for(int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
+        }
+        
+        return answer;
+    }
+	
 	public static void main(String[] args) {
 		int[] answers = { 1, 2, 3, 4, 5 };
 

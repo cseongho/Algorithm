@@ -18,14 +18,13 @@ public class Solution {
 				return (str2 + str1).compareTo(str1 + str2);
 			}
 		});
-        
-        return sarr[0].equals("0") ? sarr[0] : String.join("", sarr);
+		
+		return sarr[0].equals("0") ? sarr[0] : String.join("", sarr);
     }
 	
 	public static void main(String[] args) {
 		int[] numbers = {6,10,2};
 		
 		System.out.println(solution(numbers));
-		
 	}
 }
