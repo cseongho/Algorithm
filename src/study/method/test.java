@@ -1,30 +1,32 @@
 package study.method;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class test {
 
-	public static void main(String[] args) {		
-		int[] numbers = {6,10,2};
-		ArrayList<Integer> arr = new ArrayList<Integer>();
+	public static void main(String[] args) {
+		int[] numbers = { 6, 10, 2 };
 		
-		for(int i = 0; i < numbers.length; i++) {
-			StringBuilder sb = new StringBuilder();
-			String prefix = Integer.toString(numbers[i]);
-			sb.append(prefix);
-			
-			for(int j = numbers.length - 1; j >= 0; j--) {
-				if(i == j) continue;
-				sb.append(Integer.toString(numbers[j]));
+		String[] sarr = new String[numbers.length];
+		for (int i = 0; i < sarr.length; i++) {
+			sarr[i] = String.valueOf(numbers[i]);
+		}
+
+		Arrays.sort(sarr, new Comparator<String>() {
+
+			@Override
+			public int compare(String str1, String str2) {
+				return (str2 + str1).compareTo(str1 + str2);
 			}
-			arr.add(Integer.parseInt(sb.toString()));
-		}
+		});
 		
-		for(int i = 0; i < arr.size(); i++) {
-			System.out.println(arr.get(i));
-		}
+		
+		
+		String answer = "";
 
 	}
 
