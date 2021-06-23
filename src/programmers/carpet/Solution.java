@@ -23,6 +23,7 @@ class Solution {
     
     public static void main(String[] args) {
 		int[] answer = solution(10, 2);
+		String temp = "";
 		
 		for(int i = 0; i < answer.length; i++) {
 			System.out.print(answer[i]);
