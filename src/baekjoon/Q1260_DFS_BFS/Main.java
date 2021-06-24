@@ -17,7 +17,7 @@ public class Main {
     	System.out.print(node + " ");
 		
 		for(int next = 0; next < N+1; ++next) {
-    		if(!visited[next] &&Graph[node][next] !=0)
+    		if(!visited[next] && Graph[node][next] !=0)
     			dfs(next);
     	}
 	}
