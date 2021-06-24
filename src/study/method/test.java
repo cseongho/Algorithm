@@ -1,33 +1,33 @@
 package study.method;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.PriorityQueue;
 
 public class test {
-
-	public static void main(String[] args) {
-		int[] numbers = { 6, 10, 2 };
+	static int[] arr;
+	static boolean[] chk;
+	public static void main(String[] args) throws IOException {
+		int n=5;
+		arr=new int[n];
+		chk=new boolean[n];
+		permutation(0,n);
 		
-		String[] sarr = new String[numbers.length];
-		for (int i = 0; i < sarr.length; i++) {
-			sarr[i] = String.valueOf(numbers[i]);
-		}
-
-		Arrays.sort(sarr, new Comparator<String>() {
-
-			@Override
-			public int compare(String str1, String str2) {
-				return (str2 + str1).compareTo(str1 + str2);
-			}
-		});
+		String temp = "ddf";
 		
-		
-		
-		String answer = "";
-
 	}
-
+	static void permutation(int v,int n) {
+		if(v==n) {
+			System.out.println(Arrays.toString(arr));
+			return;
+		}
+		
+		for(int i=0;i<n;i++) {
+			if(!chk[i]) {
+				chk[i]=true;
+				arr[v]=i+1;
+				permutation(v+1,n);
+				chk[i]=false;
+			}
+		}
+	}
 }
