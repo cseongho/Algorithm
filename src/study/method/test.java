@@ -14,6 +14,8 @@ public class test {
 		
 		String temp = "ddf";
 		
+		int[][] test = new int[5][6];
+	
 	}
 	static void permutation(int v,int n) {
 		if(v==n) {
