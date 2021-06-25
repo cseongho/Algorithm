@@ -9,7 +9,7 @@ class Solution {
     public static String[] solution(String[][] tickets) {
         list = new ArrayList<>();
         visited = new boolean[tickets.length];
-        
+        ; 
         backtracking("ICN", 0, "ICN",tickets);
         Collections.sort(list);
         String[] result = list.get(0).split(" ");
